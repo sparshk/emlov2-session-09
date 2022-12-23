@@ -1,0 +1,58 @@
+[2022-12-23 11:02:49,592][__main__][INFO] - Running Demo
+[2022-12-23 11:02:49,592][__main__][INFO] - Instantiating model <src.models.mnist_module.MNISTLitModule>
+[2022-12-23 11:02:49,655][__main__][INFO] - Loaded Model: MNISTLitModule(
+  (net): SimpleDenseNet(
+    (model): Sequential(
+      (0): Linear(in_features=784, out_features=128, bias=True)
+      (1): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ReLU()
+      (3): Linear(in_features=128, out_features=256, bias=True)
+      (4): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (5): ReLU()
+      (6): Linear(in_features=256, out_features=64, bias=True)
+      (7): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (8): ReLU()
+      (9): Linear(in_features=64, out_features=10, bias=True)
+    )
+  )
+  (criterion): CrossEntropyLoss()
+  (train_acc): Accuracy()
+  (val_acc): Accuracy()
+  (test_acc): Accuracy()
+  (train_loss): MeanMetric()
+  (val_loss): MeanMetric()
+  (test_loss): MeanMetric()
+  (val_acc_best): MaxMetric()
+  (predict_transform): Normalize(mean=(0.1307,), std=(0.3081,))
+)
+[2022-12-23 11:02:49,887][Neuron][INFO] - The following operations are currently supported in torch-neuron for this model:
+[2022-12-23 11:02:49,887][Neuron][INFO] - aten::view
+[2022-12-23 11:02:49,887][Neuron][INFO] - prim::NumToTensor
+[2022-12-23 11:02:49,887][Neuron][INFO] - prim::Constant
+[2022-12-23 11:02:49,887][Neuron][INFO] - aten::relu
+[2022-12-23 11:02:49,888][Neuron][INFO] - aten::Int
+[2022-12-23 11:02:49,888][Neuron][INFO] - aten::batch_norm
+[2022-12-23 11:02:49,888][Neuron][INFO] - prim::ListConstruct
+[2022-12-23 11:02:49,888][Neuron][INFO] - aten::size
+[2022-12-23 11:02:49,888][Neuron][INFO] - aten::linear
+[2022-12-23 11:02:49,888][Neuron][INFO] - 100.00% of all operations (including primitives) (49 of 49) are supported
+[2022-12-23 11:02:49,889][Neuron][INFO] - 100.00% of arithmetic operations (13 of 13) are supported
+[2022-12-23 11:02:49,950][Neuron][INFO] - All operators are compiled by neuron-cc (this does not guarantee that neuron-cc will successfully compile)
+[2022-12-23 11:02:49,953][Neuron][INFO] - Number of arithmetic operators (pre-compilation) before = 13, fused = 13, percent fused = 100.0%
+[2022-12-23 11:02:53,111][Neuron][INFO] - Number of neuron graph operations 49 did not match traced graph 46 - using heuristic matching of hierarchical information
+[2022-12-23 11:02:53,194][Neuron][INFO] - Compiling function _NeuronGraph$84 with neuron-cc
+[2022-12-23 11:02:53,194][Neuron][INFO] - Compiling with command line: '/opt/conda/bin/neuron-cc compile /home/model-server/tmp/tmpxjkofjsq/graph_def.pb --framework TENSORFLOW --pipeline compile SaveTemps --output /home/model-server/tmp/tmpxjkofjsq/graph_def.neff --io-config {"inputs": {"0:0": [[1, 1, 28, 28], "float32"]}, "outputs": ["Sequential_8/Linear_19/aten_linear/Add:0"]} --verbose 35'
+[2022-12-23 11:03:00,879][Neuron][INFO] - skip_inference_context for tensorboard symbols at /opt/conda/lib/python3.7/site-packages/torch_neuron/tensorboard.py:305 tb_parse
+[2022-12-23 11:03:00,899][Neuron][INFO] - Number of neuron graph operations 49 did not match traced graph 46 - using heuristic matching of hierarchical information
+[2022-12-23 11:03:00,943][Neuron][INFO] - Number of arithmetic operators (post-compilation) before = 13, compiled = 13, percent compiled = 100.0%
+[2022-12-23 11:03:00,943][Neuron][INFO] - The neuron partitioner created 1 sub-graphs
+[2022-12-23 11:03:00,943][Neuron][INFO] - Neuron successfully compiled 1 sub-graphs, Total fused subgraphs = 1, Percent of model sub-graphs successfully compiled = 100.0%
+[2022-12-23 11:03:00,943][Neuron][INFO] - Compiled these operators (and operator counts) to Neuron:
+[2022-12-23 11:03:00,944][Neuron][INFO] -  => aten::Int: 1
+[2022-12-23 11:03:00,944][Neuron][INFO] -  => aten::batch_norm: 3
+[2022-12-23 11:03:00,944][Neuron][INFO] -  => aten::linear: 4
+[2022-12-23 11:03:00,944][Neuron][INFO] -  => aten::relu: 3
+[2022-12-23 11:03:00,944][Neuron][INFO] -  => aten::size: 1
+[2022-12-23 11:03:00,944][Neuron][INFO] -  => aten::view: 1
+[2022-12-23 11:03:00,946][Neuron][INFO] - skip_inference_context for tensorboard symbols at /opt/conda/lib/python3.7/site-packages/torch_neuron/tensorboard.py:305 tb_parse
+[2022-12-23 11:03:00,954][Neuron][INFO] - Number of neuron graph operations 1 did not match traced graph 4 - using heuristic matching of hierarchical information

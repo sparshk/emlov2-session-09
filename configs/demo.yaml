@@ -15,4 +15,4 @@ defaults:
 task_name: "demo"
 
 # checkpoint is necessary for demo
-ckpt_path: ???
+ckpt_path: "/opt/src/emlov2-session-09/epoch_000.ckpt"
