@@ -1,3 +1,7 @@
 docker run -it --name torchserve --rm --net=host --device=/dev/neuron0  --cap-add IPC_LOCK --entrypoint /bin/bash -v `pwd`:/opt/src 763104351884.dkr.ecr.ap-south-1.amazonaws.com/pytorch-inference-neuron:1.10.2-neuron-py37-sdk1.19.0-ubuntu18.04
 
 python src/demo.py experiment=example ckpt_path="/opt/src/emlov2-session-02/epoch_000.ckpt"
+
+torch-model-archiver --model-name mnist_neuron --version 1.0 --serialized-file /opt/src/emlov2-session-09/mnist-net.neuron.traced.pt --handler /opt/src/emlov2-session-09/src/torch_handlers/mnist_handler.py --extra-files /opt/src/emlov2-session-09/src/torch_handlers/mnist_classes/index_to_name.json
+
+curl http://127.0.0.1:8080/predictions/mnist_neuron -T /home/ubuntu/emlov2-session-09/1.png
