@@ -1,0 +1,3 @@
+docker run -it --name torchserve --rm --net=host --device=/dev/neuron0  --cap-add IPC_LOCK --entrypoint /bin/bash -v `pwd`:/opt/src 763104351884.dkr.ecr.ap-south-1.amazonaws.com/pytorch-inference-neuron:1.10.2-neuron-py37-sdk1.19.0-ubuntu18.04
+
+python src/demo.py experiment=example ckpt_path="/opt/src/emlov2-session-02/epoch_000.ckpt"
